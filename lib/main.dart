@@ -3,6 +3,6 @@ import "package:login/login.dart";
 import "package:login/signup.dart";
 import "package:login/welcome.dart";
     void main(){
-        runApp(MaterialApp(home: login(),debugShowCheckedModeBanner: false,));
+        runApp(MaterialApp(home: Signup(),debugShowCheckedModeBanner: false,));
     }
 
