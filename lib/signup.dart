@@ -20,15 +20,16 @@ class Signup extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(
-                children: [SizedBox(height: 25,),
+                children: [SizedBox(height: 45,),
                   Text(
                     "Sign Up",
                     style: TextStyle(fontSize: 25, color: Colors.black),
                   ),
                   Text(
                     "Create An Account,Its Free",
-                    style: TextStyle(fontSize: 18, color: Colors.black),
+                    style: TextStyle(fontSize: 13, color: Colors.black),
                   ),
+                  SizedBox(height: 25,),
                   Align(child: Text("UserName"), alignment: Alignment.topLeft),
                   TextField(
                     decoration: InputDecoration(
