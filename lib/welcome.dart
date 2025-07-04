@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/login.dart';
 import 'package:login/signup.dart';
 
 class Welcome extends StatelessWidget {
@@ -31,7 +32,7 @@ class Welcome extends StatelessWidget {
                 height: 46,
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => login(),));},
                   child: const Text("Login",style: TextStyle(color: Colors.black,fontSize: 15),),
                   style: ElevatedButton.styleFrom(side: BorderSide(color: Colors.black,width: 1)),
                 ),
