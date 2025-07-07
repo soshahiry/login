@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:login/forget.dart';
 import 'package:login/services.dart' hide forgett;
@@ -11,6 +13,7 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
+  bool visible = false;
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
 
@@ -51,8 +54,19 @@ class _loginState extends State<login> {
 
                 Align(child: Text("password"), alignment: Alignment.topLeft),
                 TextFormField(
+                  obscureText: !visible,
                   controller: passwordcontroller,
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          visible=!visible;
+                        });
+                      },
+                      icon: visible
+                          ? Icon(Icons.visibility)
+                          : Icon(Icons.visibility_off),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(color: Colors.grey),
