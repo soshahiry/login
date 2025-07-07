@@ -1,5 +1,6 @@
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
+import "package:login/forget.dart";
 import "package:login/login.dart";
 import "package:login/services.dart";
 import "package:login/signup.dart";
@@ -9,5 +10,5 @@ import "firebase_options.dart";
 
 void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MaterialApp(home: Welcome(), debugShowCheckedModeBanner: false));
+  runApp(MaterialApp(home: login(), debugShowCheckedModeBanner: false));
 }

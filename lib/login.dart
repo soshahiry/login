@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:login/forget.dart';
+import 'package:login/services.dart' hide forgett;
 import 'package:login/signup.dart';
 
-class login extends StatelessWidget {
+class login extends StatefulWidget {
   const login({super.key});
+
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +30,17 @@ class login extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20, left: 20),
             child: Column(
               children: [
-                SizedBox(height: 27,),
+                SizedBox(height: 27),
                 Text(
                   "Login",
                   style: TextStyle(color: Colors.black, fontSize: 23),
                 ),
-                SizedBox(height: 13,),
+                SizedBox(height: 13),
                 Text("Login to your account", style: TextStyle(fontSize: 13)),
-                SizedBox(height: 10,),
+                SizedBox(height: 10),
                 Align(child: Text("Email"), alignment: Alignment.topLeft),
-                TextField(
+                TextFormField(
+                  controller: emailcontroller,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
@@ -37,14 +48,32 @@ class login extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 Align(child: Text("password"), alignment: Alignment.topLeft),
-                TextField(
+                TextFormField(
+                  controller: passwordcontroller,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(color: Colors.grey),
                     ),
                   ),
+                ),
+                SizedBox(height: 15),
+                GestureDetector(
+                  child: Align(
+                    child: Text(
+                      "Forgot Password",
+                      style: TextStyle(color: Colors.blue, fontSize: 12),
+                    ),
+                    alignment: Alignment.bottomRight,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => forgett()),
+                    );
+                  },
                 ),
                 SizedBox(height: 24),
                 SizedBox(
@@ -52,7 +81,11 @@ class login extends StatelessWidget {
                   width: 500,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => login(),));
+                      llogin(
+                        email: emailcontroller.text,
+                        pasword: passwordcontroller.text,
+                        context: context,
+                      );
                     },
                     child: Text(
                       "Login",
@@ -63,9 +96,10 @@ class login extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 20),
                 Center(
-                  child: Row(mainAxisAlignment:MainAxisAlignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Don't you have an account?",
@@ -73,7 +107,10 @@ class login extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Signup(),));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Signup()),
+                          );
                         },
                         child: const Text(
                           "sign Up",
@@ -83,7 +120,7 @@ class login extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 23,),
+                SizedBox(height: 23),
                 Image(
                   image: NetworkImage(
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgzsOgTKM63byDh4B7g3qIllnw4sD45CmRcA&s",

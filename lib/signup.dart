@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login/login.dart';
+import 'package:login/services.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -9,10 +10,11 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  TextEditingController namecontroller=TextEditingController();
-  TextEditingController emailcontroller=TextEditingController();
-  TextEditingController passwordcontroller=TextEditingController();
-  TextEditingController confirmcontroller=TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController confirmcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class _SignupState extends State<Signup> {
                   ),
                   SizedBox(height: 25,),
                   Align(child: Text("UserName"), alignment: Alignment.topLeft),
-                  TextField(
+                  TextFormField(controller: namecontroller,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -54,7 +56,7 @@ class _SignupState extends State<Signup> {
                   ),
                   SizedBox(height: 20),
                   Align(child: Text("Email"), alignment: Alignment.topLeft),
-                  TextField(
+                  TextFormField(controller: emailcontroller,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -67,7 +69,7 @@ class _SignupState extends State<Signup> {
                   ),
                   SizedBox(height: 20),
                   Align(child: Text("Password"), alignment: Alignment.topLeft),
-                  TextField(
+                  TextFormField(controller: passwordcontroller,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -83,7 +85,7 @@ class _SignupState extends State<Signup> {
                     child: Text("Confirm Password"),
                     alignment: Alignment.topLeft,
                   ),
-                  TextField(
+                  TextFormField(controller: confirmcontroller,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -99,7 +101,15 @@ class _SignupState extends State<Signup> {
                     width: 500,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => login(),));
+                        signup(username: namecontroller.text,
+                            email: emailcontroller.text,
+                            password: passwordcontroller.text,
+                            confirm: confirmcontroller.text,context: context);
+
+                      },
                       child: const Text(
                         "Sign Up",
                         style: TextStyle(color: Colors.white, fontSize: 16),
@@ -120,7 +130,8 @@ class _SignupState extends State<Signup> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => login(),));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => login(),));
                           },
                           child: const Text(
                             "Login",
